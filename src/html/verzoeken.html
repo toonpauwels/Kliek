@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>kliek</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
+    <link rel="stylesheet" href="css/app.min.css" />
+    <link rel="stylesheet" href="css/responsive.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+    <!-- inject:js -->
+    <script src="js/app.min.js"></script>
+  </head>
+  <body ng-app="Kliek" ng-controller="MainController">
+  
+    <!-- Navbars -->
+    <div class="navbar navbar-app navbar-absolute-bottom">
+        <div class="btn-group justified">
+          <a href="nieuwaanbieding.html" class="btn btn-navbar"><i class="fa fa-plus fa-navbar"></i></a>
+          <a href="personal.html" class="btn btn-navbar"><i class="fa fa-user fa-navbar"></i></a>
+            <a href="index.html" class="btn btn-navbar"><i class="fa fa-home fa-navbar"></i></a>
+            <a href="aanbiedingen.html" class="btn btn-navbar"><i class="fa fa-bullhorn fa-navbar"></i></a>
+          <a href="vrienden.html" class="btn btn-navbar"><i class="fa fa-users fa-navbar"></i></a>
+        </div>
+      </div>
+
+    <!-- overlay -->
+    <div id="overlay">
+        <img src="../images/closebutton.png" id="closebtn" alt="close" onclick="off(), back()">
+        
+        <article>
+            <div class="info">
+                <div>
+                    <h1>Brievenbus schilderen</h1>
+                    <h2>Helga C.</h2>
+                    <h2>Verzoek</h2>
+                    <h3>Geplaatst op 05/04/18</h3>
+                </div>
+                <p class="price">2K</p>
+            </div>
+            <p class="descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse quo officia, at porro quidem assumenda doloribus quis, quod perspiciatis itaque labore, vitae adipisci.</p>
+        </article>
+        
+        <div id="aannemenbtn" onclick="go()">Aannemen</div>
+    </div>
+    
+    <div id="layer2">
+        <h3>Weet u zeker dat u deze taak wilt uitvoeren?</h3>
+        
+        <section class="layerparent">
+            <div onclick="conf()">Ja</div>
+            <p onclick="back()">Toch niet</p>
+        </section>
+    </div>
+    
+    <div id="layer3">
+        <h3>Uw partner is op de hoogte gesteld!</h3>
+        
+        <section class="layerparent">
+            <a href="vrienden.html">Chat</a>
+            <p onclick="off(), back()">Terug</p>
+        </section>
+    </div>
+
+   <!-- ~ .app -->
+    <div class="app">
+
+      <section class="selectionbar">
+          <a href="aanbiedingen.html" class="selchild">Aanbiedingen</a>
+          <div class="selchild">Verzoeken</div>
+      </section>
+      
+      <ul class="aanblist">
+         <li class="nestparent" onclick="on()">
+             <div>
+                 <h1>Kachel uitkuisen</h1>
+                 <p>Lenny V.</p>
+             </div>
+             <p>3K</p>
+         </li>
+         <li class="nestparent" onclick="on()">
+            <div>
+                <h1>Gaten boren</h1>
+                <p>Leo M.</p>
+            </div>
+             <p>2K</p>
+         </li>
+         <li class="nestparent" onclick="on()">
+            <div>
+                <h1>Brievenbus schilderen</h1>
+                <p>Helga C.</p>
+            </div>
+             <p>2K</p>
+         </li>
+      </ul>
+
+    </div>
+    
+    <!-- ~ Modals -->
+    <div ui-yield-to="modals"></div>
+    
+    <script>
+        function on(){
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        function off(){
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("layer3").style.display = "none";
+        }
+        
+        function go(){
+            document.getElementById("layer2").style.display = "block";
+        }
+        
+        function back(){
+            document.getElementById("layer2").style.display = "none";
+        }
+        
+        function conf(){
+            document.getElementById("layer3").style.display = "block";
+        }
+    </script>
+    
+  </body>
+</html>

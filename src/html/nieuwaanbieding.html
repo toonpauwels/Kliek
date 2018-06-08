@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>kliek</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
+    <link rel="stylesheet" href="css/app.min.css" />
+    <link rel="stylesheet" href="css/responsive.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open Sans" rel="stylesheet">
+
+    <!-- inject:js -->
+    <script src="js/app.min.js"></script>
+</head>
+<body ng-app="Kliek" ng-controller="MainController">
+
+
+<div class="app">
+    <div class="navbar navbar-app navbar-absolute-top ">
+        <div class="navbar-brand navbar-brand-center navbar-top-personal" ui-yield-to="title">
+            <h3>Toon P.</h3>
+            <h3>K 200</h3>
+        </div>
+    </div>
+    <div class="navbar navbar-app navbar-absolute-bottom">
+        <div class="btn-group justified">
+            <a href="nieuwaanbieding.html" class="btn btn-navbar"><i class="fa fa-plus fa-navbar"></i></a>
+            <a href="personal.html" class="btn btn-navbar"><i class="fa fa-user fa-navbar"></i></a>
+            <a href="index.html" class="btn btn-navbar"><i class="fa fa-home fa-navbar"></i></a>
+            <a href="aanbiedingen.html" class="btn btn-navbar"><i class="fa fa-bullhorn fa-navbar"></i></a>
+            <a href="vrienden.html" class="btn btn-navbar"><i class="fa fa-users fa-navbar"></i></a>
+        </div>
+    </div>
+
+    <div class="app-body">
+        <div class="app-content">
+            <div id="personal1">
+            <div class="buttons">
+                <a class="nieuw-opdracht btn">Aanbieding</a>
+                <a href="nieuwverzoek.html" class="nieuw-opdracht not-selected btn">Verzoek</a>
+            </div>
+
+            <form class="form" id="aanbiedingform">
+                <div class="form-group">
+                <input type="text" class="titel form-control" id="titel" placeholder="Titel">
+                </div>
+                <div class="form-group">
+                <textarea class="beschrijving form-control" id="beschrijving" placeholder="Beschrijving"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="aantalklieks" class="col-xs-8">Aantal Klieks</label>
+                    <input type="number" class="col-xs-4 form-input" id="aantalklieks">
+                </div>
+                <div class="form-group">
+                    <label for="bereik" class="col-xs-8">Bereik</label>
+                    <input type="number" class="col-xs-4 form-input" id="bereik">
+                </div>
+                <div class="form-group">
+                    <label for="deadline" class="col-xs-8">Deadline</label>
+                    <input type="date" class="col-xs-4 form-input" id="deadline">
+                </div>
+                <button class="btn btn-body" id="submit" onclick="show();">Plaats</button>
+            </form>
+            </div>
+
+
+            </div>
+        </div>
+    </div>
+    <script>
+        function show(){
+            var titel = document.getElementById("titel");
+            localStorage.setItem("titel2", titel.value);
+            document.getElementById("aanbiedingform").reset();
+        }
+    </script>
+
+
+
+</div><!-- ~ .app -->
+
+<div ui-yield-to="modals"></div>
+-
+</body>
+</html>

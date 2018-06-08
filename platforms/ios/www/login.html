@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>kliek</title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="yes" />
+    <link rel="stylesheet" href="css/app.min.css" />
+    <link rel="stylesheet" href="css/responsive.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open Sans" rel="stylesheet">
+
+    <script src="http://localhost:8001/target/target-script-min.js"></script>
+    <script src="cordova.js"></script>
+    <script src="js/app.min.js"></script>
+</head>
+<body ng-app="Kliek" ng-controller="MainController">
+
+
+<div class="app">
+    Email: <input id="email" type="email" placeholder="email@domain.com" /> <br/>
+    Password: <input id="password" type="password" placeholder="password" /> <br/>
+    <button id="loginButton">Login</button>
+    <button id="registerButton">Register</button>
+    <br/>
+    Message: <p id="status"></p>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var url = "http://localhost:8888/login/auth.php";
+
+            $("#loginButton").click(function(){
+                var email= $.trim($("#email").val());
+                var password= $.trim($("#password").val());
+
+                $("#status").text("Authenticating...");
+                var loginString ="email="+email+"&password="+password+"&login=";
+                $.ajax({
+                    type: "POST",crossDomain: true, cache: false,
+                    url: url,
+                    data: loginString,
+                    success: function(data){
+                        if(data == "success") {
+                            $("#status").text("Login Success..!");
+                            localStorage.loginstatus = "true";
+                            window.location.href = "index.html";
+                        }
+                        else if(data == "error")
+                        {
+                            $("#status").text("Login Failed..!");
+                        }
+                    }
+                });
+            });
+
+            $("#registerButton").click(function(){
+                var email= $.trim($("#email").val());
+                var password= $.trim($("#password").val());
+
+                $("#status").text("Creating New Account...");
+                var dataString="email="+email+"&password="+password+"&register=";
+                $.ajax({
+                    type: "POST",crossDomain: true, cache: false,
+                    url: url,
+                    data: dataString,
+                    success: function(data){
+                        if(data == "success")
+                            $("#status").text("Registered success");
+                        else if( data == "exist")
+                            $("#status").text("Account is already there");
+                        else if(data == "error")
+                            $("#status").text("Register Failed");
+                    }
+                });
+            });
+        });
+    </script>
+
+
+</div><!-- ~ .app -->
+
+<div ui-yield-to="modals"></div>
+</body>
+</html>

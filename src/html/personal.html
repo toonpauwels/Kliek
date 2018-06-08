@@ -11,11 +11,13 @@
     <link rel="stylesheet" href="css/app.min.css" />
     <link rel="stylesheet" href="css/responsive.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open Sans" rel="stylesheet">
 
     <!-- inject:js -->
     <script src="js/app.min.js"></script>
+
 </head>
-<body ng-app="Kliek" ng-controller="MainController">
+<body ng-app="Kliek" ng-controller="MainController" onload="getli();">
 
 
 <div class="app">
@@ -25,6 +27,106 @@
             <h3>K 200</h3>
         </div>
     </div>
+    <div class="navbar navbar-app navbar-absolute-bottom">
+        <div class="btn-group justified">
+            <a href="nieuwaanbieding.html" class="btn btn-navbar"><i class="fa fa-plus fa-navbar"></i></a>
+            <a href="personal.html" class="btn btn-navbar"><i class="fa fa-user fa-navbar"></i></a>
+            <a href="index.html" class="btn btn-navbar"><i class="fa fa-home fa-navbar"></i></a>
+            <a href="aanbiedingen.html" class="btn btn-navbar"><i class="fa fa-bullhorn fa-navbar"></i></a>
+            <a href="vrienden.html" class="btn btn-navbar"><i class="fa fa-users fa-navbar"></i></a>
+        </div>
+    </div>
+
+    <div class="panel-group" ui-state="myAccordion" ui-default="1">
+        <div class="panel">
+            <div class="panel-heading" ui-set="{'myAccordion': 1}" onclick="setTimeout(getli, 10)">
+                <h4 class="panel-title">Aanbiedingen</h4>
+            </div>
+            <div ui-if="myAccordion == {{1}}">
+                <div class="panel-body">
+                    <ul class="list-group" id="aanbiedinglist">
+                        <li>Muren verven</li>
+                        <li>Bomen omver zagen</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading" ui-set="{'myAccordion':  2}" onclick="setTimeout(getli2, 10)">
+                <h4 class="panel-title">Verzoeken</h4>
+            </div>
+            <div ui-if="myAccordion == {{2}}">
+                <div class="panel-body">
+                    <ul class="list-group" id="verzoeklist">
+                        <li>Gras afrijden</li>
+                        <li>Ikea kast ineensteken</li>
+                        <li>Onkruid verwijderen</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading" ui-set="{'myAccordion':  3}">
+                <h4 class="panel-title">Geschiedenis</h4>
+            </div>
+            <div ui-if="myAccordion == {{3}}">
+                <div class="panel-body">
+                    <ul class="list-group">
+                        <li>Kamer behangen</li>
+                        <li>Haag snoeien</li>
+                        <li>Bladeren keren</li>
+                        <li>Foto's nemen</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="panel">
+            <div class="panel-heading" ui-set="{'myAccordion':  4}">
+                <h4 class="panel-title">Profiel</h4>
+            </div>
+            <div ui-if="myAccordion == {{4}}">
+                <div class="panel-body">
+                    <div id="profile">
+                        <div id="profileinfo">
+                            <p>Toon Pauwels</p>
+                            <p>17/03/1997</p>
+                            <p>toon.pauwels@hotmail.com</p>
+                            <p>Mechelbaan 74, 2580 Beerzel</p>
+                        </div>
+                        <div id="profilescore">
+                            <h5>score</h5>
+                            <p id="score">4,5</p>
+                        </div>
+                    </div>
+                    <div id="changepic">
+                        <img src="images/user.png" id="userimage"/>
+                        <br>
+                        <a href="" id="profilepic">change profile picture</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function getli(){
+            var list = document.getElementById("aanbiedinglist");
+            var storedvalue = localStorage.getItem("titel2");
+            var entry = document.createElement('li');
+
+            entry.appendChild(document.createTextNode(storedvalue));
+            list.insertBefore(entry,list.childNodes[0]);
+
+        }
+
+        function getli2(){
+            var list2 = document.getElementById("verzoeklist");
+            var storedvalue2 = localStorage.getItem("titel3");
+            var entry2 = document.createElement('li');
+
+            entry2.appendChild(document.createTextNode(storedvalue2));
+            list2.insertBefore(entry2,list2.childNodes[0]);
+        }
+    </script>
 </div><!-- ~ .app -->
 
 <div ui-yield-to="modals"></div>

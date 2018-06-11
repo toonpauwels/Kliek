@@ -214,7 +214,7 @@ h6{
   font-family: 'Open Sans', sans-serif;
 }
 
-#overlay{
+#overlay, #overlayv, #overlay2{
   position: fixed; /* Sit on top of the page content */
   display: none; /* Hidden by default */
   width: 100%; /* Full width (cover the whole page) */
@@ -228,7 +228,7 @@ h6{
   cursor: pointer; /* Add a pointer on hover */
 }
 
-#layer2, #layer3{
+#layer2, #layer3, #layer2v, #layer3v{
   display: none;
   position: absolute;
   top: 78%;
@@ -242,13 +242,13 @@ h6{
   z-index: 6;
 }
 
-#layer2{
+#layer2, #layer2v{
   -webkit-box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.16);
   -moz-box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.16);
   box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.16);
 }
 
-#layer2 h3, #layer3 h3{
+#layer2 h3, #layer3 h3, #layer2v h3, #layer3v h3{
   text-align: center;
   margin: auto 15%;
   height: 58px;
@@ -295,7 +295,7 @@ h6{
   width: 32px;
 }
 
-#overlay article{
+#overlay article, #overlayv article, #overlay2 article{
   position: absolute;
   top: 230px;
   left: 50%;
@@ -303,10 +303,14 @@ h6{
   transform: translate(-50%,-50%);
   -ms-transform: translate(-50%,-50%);
   width: 85%;
-  min-height: 250px;
+  height: 250px;
   -webkit-box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.16);
   -moz-box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.16);
   box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.16);
+
+}
+.icon{
+  width: 40%;
 }
 
 .price{
@@ -447,7 +451,7 @@ h6{
 }
 #profileinfo{
   color: dimgrey;
-  margin: 40px 40px;
+  margin: 30px 40px;
 
 }
 #score{

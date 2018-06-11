@@ -30,37 +30,157 @@
 
       <div class="navbar navbar-app navbar-absolute-bottom">
         <div class="btn-group justified">
-          <a href="nieuwaanbieding.html" class="btn btn-navbar"><i class="fa fa-plus fa-navbar"></i></a>
-          <a href="personal.html" class="btn btn-navbar"><i class="fa fa-user fa-navbar"></i></a>
-          <a href="index.html" class="btn btn-navbar"><i class="fa fa-home fa-navbar"></i></a>
-          <a href="aanbiedingen.html" class="btn btn-navbar"><i class="fa fa-bullhorn fa-navbar"></i></a>
-          <a href="vrienden.html" class="btn btn-navbar"><i class="fa fa-users fa-navbar"></i></a>
+          <a href="nieuwaanbieding.html" class="btn btn-navbar"><img src="images/plus.png" class="icon" alt="add"></a>
+          <a href="personal.html" class="btn btn-navbar"><img src="images/profile.png" class="icon" alt="profile"></a>
+          <a href="index.html" class="btn btn-navbar"><img src="images/home.png" class="icon" alt="home"></a>
+          <a href="aanbiedingen.html" class="btn btn-navbar"><img src="images/exchange.png" class="icon" alt="aanb en verz"></a>
+          <a href="vrienden.html" class="btn btn-navbar"><img src="images/friends.png" class="icon" alt="friends"></a>
         </div>
       </div>
+
+      <!-- Overlays aanbiedingen -->
+      <div id="overlay">
+        <img src="images/closebutton.png" id="closebtn" alt="close" onclick="off(), back()">
+
+        <article>
+          <div class="info">
+            <div>
+              <h1>Haag scheren</h1>
+              <h2>Leo M.</h2>
+              <h2>Aanbieding</h2>
+              <h3>Geplaatst op 03/04/18</h3>
+            </div>
+            <p class="price">8K</p>
+          </div>
+          <p class="descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse quo officia, at porro quidem assumenda doloribus quis, quod perspiciatis itaque labore, vitae adipisci.</p>
+        </article>
+
+        <div id="aannemenbtn" onclick="go()">Aannemen</div>
+      </div>
+
+      <div id="layer2">
+        <h3>Weet u zeker dat u deze dienst wilt aannemen?</h3>
+
+        <section class="layerparent">
+          <div onclick="conf()">Ja</div>
+          <p onclick="back()">Toch niet</p>
+        </section>
+      </div>
+
+      <div id="layer3">
+        <h3>Uw partner is op de hoogte gesteld!</h3>
+
+        <section class="layerparent">
+          <a href="vrienden.html">Chat</a>
+          <p onclick="off(), back()">Terug</p>
+        </section>
+      </div>
+
+      <!-- Overlays verzoeken -->
+      <div id="overlayv">
+        <img src="images/closebutton.png" id="closebtn" alt="close" onclick="offv(), backv()">
+
+        <article>
+          <div class="info">
+            <div>
+              <h1>Brievenbus schilderen</h1>
+              <h2>Helga C.</h2>
+              <h2>Verzoek</h2>
+              <h3>Geplaatst op 05/04/18</h3>
+            </div>
+            <p class="price">2K</p>
+          </div>
+          <p class="descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse quo officia, at porro quidem assumenda doloribus quis, quod perspiciatis itaque labore, vitae adipisci.</p>
+        </article>
+
+        <div id="aannemenbtn" onclick="gov()">Aannemen</div>
+      </div>
+
+      <div id="layer2v">
+        <h3>Weet u zeker dat u deze taak wilt uitvoeren?</h3>
+
+        <section class="layerparent">
+          <div onclick="confv()">Ja</div>
+          <p onclick="backv()">Toch niet</p>
+        </section>
+      </div>
+
+      <div id="layer3v">
+        <h3>Uw partner is op de hoogte gesteld!</h3>
+
+        <section class="layerparent">
+          <a href="vrienden.html">Chat</a>
+          <p onclick="offv(), backv()">Terug</p>
+        </section>
+      </div>
+
 
       <!-- App Body -->
       <div class="app-body">
 
-          <ul class="list-group list-home">
-            <h4>Nieuwste aanbiedingen</h4>
-            <li><a href="#" class="list-group-item">First item</a></li>
-            <li><a href="#" class="list-group-item">Second item</a></li>
-            <li><a href="#" class="list-group-item">Third item</a></li>
-            <li><a href="#" class="list-group-item">Fourth item</a></li>
-          </ul>
+        <ul class="list-group list-home">
+          <h4>Nieuwste aanbiedingen</h4>
+          <li onclick="on()"><a href="#" class="list-group-item">Haag scheren</a></li>
+          <li onclick="on()"><a href="#" class="list-group-item">Bladeren keren</a></li>
+          <li onclick="on()"><a href="#" class="list-group-item">Foto's nemen</a></li>
+          <li onclick="on()"><a href="#" class="list-group-item">boom snoeien</a></li>
+        </ul>
 
-          <ul class="list-group list-home">
-            <h4>Nieuwste verzoeken</h4>
-            <li><a href="#" class="list-group-item">First item</a></li>
-            <li><a href="#" class="list-group-item">Second item</a></li>
-            <li><a href="#" class="list-group-item">Third item</a></li>
-            <li><a href="#" class="list-group-item">Fourth item</a></li>
-          </ul>
-        </div>
+        <ul class="list-group list-home">
+          <h4>Nieuwste verzoeken</h4>
+          <li onclick="onv()"><a href="#" class="list-group-item">onkruid wieden</a></li>
+          <li onclick="onv()"><a href="#" class="list-group-item">brievenbus schilderen</a></li>
+          <li onclick="onv()"><a href="#" class="list-group-item">buxus snoeien</a></li>
+          <li onclick="onv()"><a href="#" class="list-group-item">plafond herstellen</a></li>
+        </ul>
       </div>
-
-    </div><!-- ~ .app -->
+    </div>
 
     <div ui-yield-to="modals"></div>
+
+    <script>
+        function on(){
+            document.getElementById("overlay").style.display = "block";
+        }
+
+        function off(){
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("layer3").style.display = "none";
+        }
+
+        function go(){
+            document.getElementById("layer2").style.display = "block";
+        }
+
+        function back(){
+            document.getElementById("layer2").style.display = "none";
+        }
+
+        function conf(){
+            document.getElementById("layer3").style.display = "block";
+        }
+
+        function onv(){
+            document.getElementById("overlayv").style.display = "block";
+        }
+
+        function offv(){
+            document.getElementById("overlayv").style.display = "none";
+            document.getElementById("layer3v").style.display = "none";
+        }
+
+        function gov(){
+            document.getElementById("layer2v").style.display = "block";
+        }
+
+        function backv(){
+            document.getElementById("layer2v").style.display = "none";
+        }
+
+        function confv(){
+            document.getElementById("layer3v").style.display = "block";
+        }
+    </script>
+
   </body>
 </html>

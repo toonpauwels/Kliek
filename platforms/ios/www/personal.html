@@ -30,13 +30,108 @@
     </div>
     <div class="navbar navbar-app navbar-absolute-bottom">
         <div class="btn-group justified">
-            <a href="nieuwaanbieding.html" class="btn btn-navbar"><i class="fa fa-plus fa-navbar"></i></a>
-            <a href="personal.html" class="btn btn-navbar"><i class="fa fa-user fa-navbar"></i></a>
-            <a href="index.html" class="btn btn-navbar"><i class="fa fa-home fa-navbar"></i></a>
-            <a href="aanbiedingen.html" class="btn btn-navbar"><i class="fa fa-bullhorn fa-navbar"></i></a>
-            <a href="vrienden.html" class="btn btn-navbar"><i class="fa fa-users fa-navbar"></i></a>
+            <a href="nieuwaanbieding.html" class="btn btn-navbar"><img src="images/plus.png" class="icon" alt="add"></a>
+            <a href="personal.html" class="btn btn-navbar"><img src="images/profile.png" class="icon" alt="profile"></a>
+            <a href="index.html" class="btn btn-navbar"><img src="images/home.png" class="icon" alt="home"></a>
+            <a href="aanbiedingen.html" class="btn btn-navbar"><img src="images/exchange.png" class="icon" alt="aanb en verz"></a>
+            <a href="vrienden.html" class="btn btn-navbar"><img src="images/friends.png" class="icon" alt="friends"></a>
         </div>
     </div>
+
+    <!-- Overlays aanbiedingen -->
+    <div id="overlay">
+        <img src="images/closebutton.png" id="closebtn" alt="close" onclick="off(), back()">
+
+        <article>
+            <div class="info">
+                <div>
+                    <h1>Haag scheren</h1>
+                    <h2>Leo M.</h2>
+                    <h2>Aanbieding</h2>
+                    <h3>Geplaatst op 03/04/18</h3>
+                </div>
+                <p class="price">8K</p>
+            </div>
+            <p class="descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse quo officia, at porro quidem assumenda doloribus quis, quod perspiciatis itaque labore, vitae adipisci.</p>
+        </article>
+
+        <div id="aannemenbtn" onclick="go()">Aannemen</div>
+    </div>
+    <div id="overlay2">
+        <img src="images/closebutton.png" id="closebtn" alt="close" onclick="off2(), back()">
+
+        <article>
+            <div class="info">
+                <div>
+                    <h1 id="overlaytitel"></h1>
+                    <h2>Toon P.</h2>
+                    <h2>Aanbieding</h2>
+                    <h3 id="deadline"></h3>
+                </div>
+                <p class="price" id="klieks"></p>
+            </div>
+            <p class="descr" id="beschrijving"></p>
+        </article>
+
+        <div id="aannemenbtn" onclick="go()">Aannemen</div>
+    </div>
+    <div id="layer2">
+        <h3>Weet u zeker dat u deze dienst wilt aannemen?</h3>
+
+        <section class="layerparent">
+            <div onclick="conf()">Ja</div>
+            <p onclick="back()">Toch niet</p>
+        </section>
+    </div>
+
+    <div id="layer3">
+        <h3>Uw partner is op de hoogte gesteld!</h3>
+
+        <section class="layerparent">
+            <a href="vrienden.html">Chat</a>
+            <p onclick="off(), back()">Terug</p>
+        </section>
+    </div>
+
+    <!-- Overlays verzoeken -->
+    <div id="overlayv">
+        <img src="images/closebutton.png" id="closebtn" alt="close" onclick="offv(), backv()">
+
+        <article>
+            <div class="info">
+                <div>
+                    <h1>Brievenbus schilderen</h1>
+                    <h2>Helga C.</h2>
+                    <h2>Verzoek</h2>
+                    <h3>Geplaatst op 05/04/18</h3>
+                </div>
+                <p class="price">2K</p>
+            </div>
+            <p class="descr">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse quo officia, at porro quidem assumenda doloribus quis, quod perspiciatis itaque labore, vitae adipisci.</p>
+        </article>
+
+        <div id="aannemenbtn" onclick="gov()">Aannemen</div>
+    </div>
+
+    <div id="layer2v">
+        <h3>Weet u zeker dat u deze taak wilt uitvoeren?</h3>
+
+        <section class="layerparent">
+            <div onclick="confv()">Ja</div>
+            <p onclick="backv()">Toch niet</p>
+        </section>
+    </div>
+
+    <div id="layer3v">
+        <h3>Uw partner is op de hoogte gesteld!</h3>
+
+        <section class="layerparent">
+            <a href="vrienden.html">Chat</a>
+            <p onclick="offv(), backv()">Terug</p>
+        </section>
+    </div>
+
+
 
     <div class="panel-group" ui-state="myAccordion" ui-default="1">
         <div class="panel">
@@ -46,8 +141,8 @@
             <div ui-if="myAccordion == {{1}}">
                 <div class="panel-body">
                     <ul class="list-group" id="aanbiedinglist">
-                        <li>Muren verven</li>
-                        <li>Bomen omver zagen</li>
+                        <li onclick="on()">Haag scheren</li>
+                        <li onclick="on()">Bomen omver zagen</li>
                     </ul>
                 </div>
             </div>
@@ -59,9 +154,9 @@
             <div ui-if="myAccordion == {{2}}">
                 <div class="panel-body">
                     <ul class="list-group" id="verzoeklist">
-                        <li>Gras afrijden</li>
-                        <li>Ikea kast ineensteken</li>
-                        <li>Onkruid verwijderen</li>
+                        <li onclick="onv()">Brievenbus schilderen</li>
+                        <li onclick="onv()">Ikea kast ineensteken</li>
+                        <li onclick="onv()">Onkruid verwijderen</li>
                     </ul>
                 </div>
             </div>
@@ -113,6 +208,7 @@
             var list = document.getElementById("aanbiedinglist");
             var storedvalue = localStorage.getItem("titel2");
             var entry = document.createElement('li');
+            entry.setAttribute('onclick', 'on2()');
 
             entry.appendChild(document.createTextNode(storedvalue));
             list.insertBefore(entry,list.childNodes[0]);
@@ -123,9 +219,68 @@
             var list2 = document.getElementById("verzoeklist");
             var storedvalue2 = localStorage.getItem("titel3");
             var entry2 = document.createElement('li');
+            entry2.setAttribute('onclick', 'onv()');
 
             entry2.appendChild(document.createTextNode(storedvalue2));
             list2.insertBefore(entry2,list2.childNodes[0]);
+        }
+
+        function on(){
+            document.getElementById("overlay").style.display = "block";
+        }
+        function on2(){
+            var storedvalue = localStorage.getItem("titel2");
+            var storedvalue2 = localStorage.getItem("klieks");
+            var beschrijving = localStorage.getItem("beschrijving");
+            var deadline = localStorage.getItem("deadline");
+            document.getElementById("overlay2").style.display = "block";
+            document.getElementById("overlaytitel").innerHTML = storedvalue;
+            document.getElementById("klieks").innerHTML = storedvalue2 + "K";
+            document.getElementById("beschrijving").innerHTML = beschrijving;
+            document.getElementById("deadline").innerHTML = deadline;
+
+        }
+
+        function off(){
+            document.getElementById("overlay").style.display = "none";
+            document.getElementById("layer3").style.display = "none";
+        }
+        function off2(){
+            document.getElementById("overlay2").style.display = "none";
+            document.getElementById("layer3").style.display = "none";
+        }
+
+        function go(){
+            document.getElementById("layer2").style.display = "block";
+        }
+
+        function back(){
+            document.getElementById("layer2").style.display = "none";
+        }
+
+        function conf(){
+            document.getElementById("layer3").style.display = "block";
+        }
+
+        function onv(){
+            document.getElementById("overlayv").style.display = "block";
+        }
+
+        function offv(){
+            document.getElementById("overlayv").style.display = "none";
+            document.getElementById("layer3v").style.display = "none";
+        }
+
+        function gov(){
+            document.getElementById("layer2v").style.display = "block";
+        }
+
+        function backv(){
+            document.getElementById("layer2v").style.display = "none";
+        }
+
+        function confv(){
+            document.getElementById("layer3v").style.display = "block";
         }
     </script>
 </div><!-- ~ .app -->
